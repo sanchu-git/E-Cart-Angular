@@ -1,19 +1,21 @@
+<app-header></app-header>
+
 <header class=" py-5">
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img height="300px"
-          src="https://cdn.vectorstock.com/i/preview-1x/09/80/online-shopping-banner-vector-17230980.jpg"
+        <img height="400px"
+          src="https://as1.ftcdn.net/v2/jpg/05/16/68/22/1000_F_516682204_FGJYh9RbSzSpmuBqJIzzQadg2HSiYbTn.jpg"
           class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img height="300px"
-          src="https://static.vecteezy.com/system/resources/thumbnails/001/937/856/small/paper-art-shopping-online-on-smartphone-sale-promotion-backgroud-banner-for-market-ecommerce-free-vector.jpg"
+        <img height="400px"
+          src="https://static.vecteezy.com/system/resources/previews/006/532/742/non_2x/flash-sale-banner-illustration-template-design-of-special-offer-discount-for-media-promotion-and-social-media-post-free-vector.jpg"
           class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img height="300px"
-          src="https://buysellgraphic.com/images/graphic_preview/thumb/ecommerce_website_banner_template_customers_sketch_flat_design_55246.jpg"
+        <img height="400px"
+          src="https://marketplace.canva.com/EAFIjoiuFfE/1/0/1600w/canva-red-and-yellow-modern-flash-sale-banner-DCEP0ZwLMII.jpg"
           class="d-block w-100" alt="...">
       </div>
     </div>
@@ -33,7 +35,8 @@
 <section class="py-2">
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <div *ngFor="let product of allProducts" class="col mb-5">
+      <div *ngIf="(allProducts | search : searchKey).length==0" class="fw-bolder mt-5 text-danger text-center mb-5 fs-1 w-100">Product Not Found</div>
+      <div *ngFor="let product of allProducts | search : searchKey " class="col mb-5">
         <div class="card h-100 p-2">
           <!-- Product image-->
           <img width="200px" height="200px" routerLink="/view/{{product.id}}" style="cursor: pointer;"
@@ -50,8 +53,8 @@
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="d-flex justify-content-between">
-              <button class="btn fs-5"><i class="fa-solid fa-heart-circle-xmark text-danger"></i></button>
-              <button class="btn fs-5"><i class="fa-solid fa-cart-plus text-success"></i></button>
+              <button (click)="addToWishlist(product)" class="btn fs-5"><i class="fa-solid fa-heart text-danger"></i></button>
+              <button (click)="addToCart(product)" class="btn fs-5"><i class="fa-solid fa-cart-plus text-success"></i></button>
             </div>
           </div>
         </div>

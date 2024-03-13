@@ -12,9 +12,12 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { UserCartComponent } from './user-cart/user-cart.component';
 import { HttpClientModule } from '@angular/common/http'
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { SearchPipe } from './pipes/search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     ViewProductComponent,
     WishlistComponent,
     UserCartComponent,
+    CheckoutComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,9 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPayPalModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
